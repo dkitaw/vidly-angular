@@ -1,0 +1,4 @@
+<div class="list-group">
+  <a routerLink="./" [queryParams]="{}" class="list-group-item list-group-item-action" [class.active]="!selectedGenreId" (click)="onClick(null)" >All</a>
+  <a routerLink="./" [queryParams]="{genreId: genre.id}" *ngFor="let genre of genres | async" class="list-group-item list-group-item-action" [class.active]="genre.id === selectedGenreId" (click)="onClick(genre)" >{{ genre.name }}</a>
+</div>

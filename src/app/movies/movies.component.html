@@ -1,0 +1,16 @@
+<table class="table table-striped table-hover">
+  <thead>
+    <th scope="col">Title</th>
+    <th scope="col">Genre</th>
+    <th scope="col">Number in stock</th>
+    <th scope="col">Daily rental rate</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies | async">
+      <td>{{movie.title}}</td>
+      <td>{{movie.genre.name}}</td>
+      <td>{{movie.numberInStock}}</td>
+      <td>{{movie.dailyRentalRate}}</td>
+    </tr>
+  </tbody>
+</table>

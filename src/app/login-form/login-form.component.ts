@@ -34,6 +34,4 @@ export class LoginFormComponent implements OnInit {
       }
     });
   }
-
-  diagnostic(form) { return JSON.stringify(form); }
 }

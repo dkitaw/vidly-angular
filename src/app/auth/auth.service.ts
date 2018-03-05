@@ -11,18 +11,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  private storeToken(token) {
-    console.log("Storing token:", token);
+  private storeAuthToken(token) {
     localStorage.setItem('auth_token', token);
   }
 
-  isAuthenticated() {
+  public removeAuthToken() {
+    localStorage.removeItem('auth_token');
+  }
+
+  get isAuthenticated() {
     return !!localStorage.getItem('auth_token');
   }
 
   login(params: AuthParams): Observable<string> {
     return this.http.post("https://localhost:5001/api/auth", params, {responseType: 'text'})
-      .do(this.storeToken)
+      .do(this.storeAuthToken)
       .map(x => null)
       .catch(err => Observable.of(err.error))
       ;

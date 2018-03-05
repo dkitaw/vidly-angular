@@ -10,6 +10,7 @@
         <a [routerLink]="item.link" class="nav-link">{{item.title}}</a>
       </li>
     </ul>
-    <button type="button" class="btn btn-dark" (click)="showLoginForm()">Login</button>
+    <button *ngIf="!auth.isAuthenticated" type="button" class="btn btn-dark" (click)="showLoginForm()">Login</button>
+    <button *ngIf="auth.isAuthenticated" type="button" class="btn btn-dark" (click)="logout()">Logout</button>
   </div>
 </nav>

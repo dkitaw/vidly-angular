@@ -11,7 +11,6 @@ export class MovieService {
 
   getMovies(genreId: String): Observable<Movie[]> {
     let url = 'https://localhost:5001/api/movies';
-    console.log("getMovies, genreId:", genreId);
     if (genreId)
       url = url + "?genreId=" + genreId;
 

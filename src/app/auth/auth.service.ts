@@ -20,7 +20,11 @@ export class AuthService {
   }
 
   get isAuthenticated() {
-    return !!localStorage.getItem('auth_token');
+    return !!this.getToken();
+  }
+
+  public getToken() {
+    return localStorage.getItem('auth_token');
   }
 
   login(params: AuthParams): Observable<string> {

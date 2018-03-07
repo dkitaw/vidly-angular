@@ -20,6 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AuthService } from "./auth/auth.service";
 import { GenreService } from "./genres/genre.service";
 import { MovieService } from "./movies/movie.service";
+import { GenreFormComponent } from './genre-form/genre-form.component';
 
 
 
@@ -31,6 +32,7 @@ import { MovieService } from "./movies/movie.service";
     MoviesListComponent,
     LoginFormComponent,
     NavbarComponent,
+    GenreFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { MovieService } from "./movies/movie.service";
     { provide: HTTP_INTERCEPTORS, useClass: AuthTokenInterceptor, multi: true },
   ],
   entryComponents: [
-    LoginFormComponent
+    LoginFormComponent,
+    GenreFormComponent
   ],
   bootstrap: [AppComponent]
 })

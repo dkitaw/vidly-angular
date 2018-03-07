@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { Genre } from './genre.model';
 
+import 'rxjs/add/observable/throw';
+
 @Injectable()
 export class GenreService {
 
@@ -14,5 +16,21 @@ export class GenreService {
 
   getGenres(): Observable<Genre[]> {
     return this.http.get<Genre[]>(this.genresUrl);
+  }
+
+  saveGenre(genre: Genre): Observable<Genre> {
+    const req =
+      genre.id ?
+        this.http.put<Genre>(`${this.genresUrl}/${genre.id}`, genre):
+        this.http.post<Genre>(this.genresUrl, genre);
+
+    return req;
+  }
+
+  removeGenre(genre: Genre): Observable<void> {
+    if (!genre.id)
+      return Observable.throw({ message: "Invalid request! Cannot delete unsaved genre!" });
+    
+    return this.http.delete<void>(`${this.genresUrl}/${genre.id}`);
   }
 }

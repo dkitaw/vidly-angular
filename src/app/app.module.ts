@@ -51,7 +51,7 @@ import { BootstrapModalComponent } from './bootstrap-modal/bootstrap-modal.compo
   ],
   entryComponents: [
     LoginFormComponent,
-    GenreFormComponent
+    GenreFormComponent,
   ],
   bootstrap: [AppComponent]
 })

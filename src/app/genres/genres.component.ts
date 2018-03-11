@@ -49,16 +49,15 @@ export class GenresComponent implements OnInit {
   edit($event, genre) {
     $event.stopPropagation();
     $event.preventDefault();
-    console.log("TODO Edit form:", genre);
     const modalRef = this.modalService.open(GenreFormComponent, { windowClass: "modal-dialog-centered"} )
     modalRef.componentInstance.genre = genre;
-    modalRef.result.then(_ => this.getGenres());
+    modalRef.result.then(_ => this.getGenres()).catch(console.log);
   }
 
   add($event) {
     $event.stopPropagation();
     $event.preventDefault();
     const modalRef = this.modalService.open(GenreFormComponent, { windowClass: "modal-dialog-centered"} )
-        .result.then(_ => this.getGenres());
+        .result.then(_ => this.getGenres()).catch(console.log);
   }
 }

@@ -21,10 +21,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   submit(form) {
-    console.log(form.value);
-    const params = new AuthParams();
-    params.email = form.value['login-email'];
-    params.password = form.value['login-password'];
+    const params = form.value;
     this.authService.login(params).subscribe(message => {
       if (message) {
         this.errorMessage = message;

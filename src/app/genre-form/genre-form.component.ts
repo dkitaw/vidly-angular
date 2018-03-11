@@ -22,6 +22,10 @@ export class GenreFormComponent implements OnInit {
   ngOnInit() {
   }
 
+  clearError() {
+    this.errorMessage = null;
+  }
+
   save() {
     this.genreService.saveGenre(this.genre)
     .subscribe(genre => 
@@ -31,7 +35,7 @@ export class GenreFormComponent implements OnInit {
               this.activeModal.close(this.genre);
             }, error => {
               console.log(error);
-              this.errorMessage = error.message;
+              this.errorMessage = error;
             });
   }
 
@@ -43,7 +47,7 @@ export class GenreFormComponent implements OnInit {
         this.activeModal.close(null);
       }, error => {
         console.log(error);
-        this.errorMessage = error.message;
+        this.errorMessage = error;
       })
   }
 }

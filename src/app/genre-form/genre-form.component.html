@@ -1,17 +1,9 @@
-<div class="modal-content">
-  
-    <div class="modal-header">
-      <h5 class="modal-title">Genre</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="activeModal.dismiss()">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  
-    <div class="modal-body">
-      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
-      <form #genreForm="ngForm">
+<bootstrap-modal title="Genre">
+  <main>
+      <ngb-alert type="danger" *ngIf="errorMessage" (close)="clearError()" >{{errorMessage}}</ngb-alert>
+      <form #genreForm="ngForm" (submit)="save()">
         <div class="form-group">
-          <label for="genre-name">Email</label>
+          <label for="genre-name">Genre name</label>
           <input
             type="text"
             class="form-control"
@@ -25,13 +17,10 @@
           >
         </div>
       </form>
-    </div>
-  
-    <div class="modal-footer">
-      <button *ngIf="genre.id" type="button" class="btn btn-outline-danger" (click)="remove()">Remove</button>
-      <button type="button" class="btn btn-primary" [disabled]="!genreForm.form.valid" (click)="save(genreForm)">Save</button>
-    </div>
-  
-  
-  </div>
-  
+  </main>
+
+  <footer>
+    <button *ngIf="genre.id" type="button" class="btn btn-outline-danger" (click)="remove()">Remove</button>
+    <button type="button" class="btn btn-primary" [disabled]="!genreForm.form.valid" (click)="save()">Save</button>
+  </footer>
+</bootstrap-modal>

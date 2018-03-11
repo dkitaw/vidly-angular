@@ -3,8 +3,6 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GenreService } from '../genres/genre.service';
 import { Genre } from '../genres/genre.model';
 
-import 'rxjs/add/operator/catch';
-
 @Component({
   selector: 'genre-form',
   templateUrl: './genre-form.component.html',

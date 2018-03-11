@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthParams } from "./auth-params.model";
+
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/observable/of'
+import { catchError, tap, map } from 'rxjs/operators';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 @Injectable()
 export class AuthService {
@@ -29,9 +29,10 @@ export class AuthService {
 
   login(params: AuthParams): Observable<string> {
     return this.http.post("https://localhost:5001/api/auth", params, {responseType: 'text'})
-      .do(this.storeAuthToken)
-      .map(x => null)
-      .catch(err => Observable.of(err.error))
-      ;
+      .pipe(
+        tap(this.storeAuthToken),
+        map(x => null),
+        catchError(err => new ErrorObservable(err.message))
+      );
   }
 }

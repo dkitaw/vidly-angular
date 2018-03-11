@@ -31,8 +31,9 @@ export class GenresComponent implements OnInit {
 
   ngOnInit() {
     this.getGenres();
-    this.route.queryParams.map(p => p.genreId).subscribe((genreId) => {
-      this.selectedGenreId = genreId;
+    this.route.queryParams
+      .subscribe((params) => {
+          this.selectedGenreId = params.genreId;
     });
   }
 

@@ -21,6 +21,7 @@ import { AuthService } from "./auth/auth.service";
 import { GenreService } from "./genres/genre.service";
 import { MovieService } from "./movies/movie.service";
 import { GenreFormComponent } from './genre-form/genre-form.component';
+import { BootstrapModalComponent } from './bootstrap-modal/bootstrap-modal.component';
 
 
 
@@ -33,6 +34,7 @@ import { GenreFormComponent } from './genre-form/genre-form.component';
     LoginFormComponent,
     NavbarComponent,
     GenreFormComponent,
+    BootstrapModalComponent,
   ],
   imports: [
     BrowserModule,

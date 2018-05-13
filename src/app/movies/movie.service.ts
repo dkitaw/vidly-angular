@@ -11,7 +11,7 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-  getMovies(genreId: String): Observable<Movie[]> {
+  getMovies(genreId: string): Observable<Movie[]> {
     let url = 'https://localhost:5001/api/movies';
     if (genreId)
       url = url + "?genreId=" + genreId;

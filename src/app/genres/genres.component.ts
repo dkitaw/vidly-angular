@@ -20,7 +20,7 @@ export class GenresComponent implements OnInit {
   @Output() onSelectedGenre = new EventEmitter<Genre>();
 
   private genres: Observable<Genre[]>;
-  private selectedGenreId: String;
+  private selectedGenreId: string;
 
   constructor(
     private route: ActivatedRoute,

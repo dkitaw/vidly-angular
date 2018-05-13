@@ -8,3 +8,10 @@ export class Movie
     public numberInStock: Number;
     public dailyRentalRate: Number;
 }
+
+export interface MovieWriteModel {
+    title: string;
+    genreId: string;
+    numberInStock: Number;
+    dailyRentalRate: Number;
+}

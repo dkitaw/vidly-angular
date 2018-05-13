@@ -21,8 +21,8 @@ export class GenreService {
 
   saveGenre(genre: Genre): Observable<Genre> {
     const req =
-      genre.id ?
-        this.http.put<Genre>(`${this.genresUrl}/${genre.id}`, genre):
+      genre._id ?
+        this.http.put<Genre>(`${this.genresUrl}/${genre._id}`, genre):
         this.http.post<Genre>(this.genresUrl, genre);
 
     return req.pipe(
@@ -32,10 +32,10 @@ export class GenreService {
   }
 
   removeGenre(genre: Genre): Observable<void> {
-    if (!genre.id)
+    if (!genre._id)
       return new ErrorObservable("Invalid request! Cannot delete unsaved genre!");
 
-    return this.http.delete<void>(`${this.genresUrl}/${genre.id}`)
+    return this.http.delete<void>(`${this.genresUrl}/${genre._id}`)
       .pipe(
           catchError(err => new ErrorObservable(err.message))
       );

@@ -19,10 +19,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 import { AuthService } from './auth/auth.service';
 import { MovieService } from './movies/movie.service';
+import { GenreService } from './genres/genre.service';
 import { GenreFormComponent } from './genre-form/genre-form.component';
 import { BootstrapModalComponent } from './bootstrap-modal/bootstrap-modal.component';
-
-
 
 @NgModule({
   declarations: [

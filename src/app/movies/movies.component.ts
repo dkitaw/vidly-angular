@@ -1,12 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { Observable } from 'rxjs/Observable';
+import { switchMap } from 'rxjs/operators';
 
+import { AuthService } from '../auth/auth.service';
+import { MovieFormComponent } from '../movie-form/movie-form.component';
 import { MovieService } from './movie.service';
 import { Movie } from './movie.model';
 import { Genre } from '../genres/genre.model';
-import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'movies',
@@ -20,7 +23,9 @@ export class MoviesComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private auth: AuthService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit() {
@@ -36,5 +41,16 @@ export class MoviesComponent implements OnInit {
 
   onSelect(movie) {
     this.selectedMovie = movie;
+  }
+
+  edit(movie) {
+    const modalRef = this.modalService.open(MovieFormComponent, { windowClass: "modal-dialog-centered"} );
+    modalRef.componentInstance.movie = movie;
+    modalRef.result.then(_ => this.getMovies()).catch(console.log);
+  }
+
+  add() {
+    const modalRef = this.modalService.open(MovieFormComponent, { windowClass: "modal-dialog-centered"} )
+    .result.then(_ => this.getMovies()).catch(console.log);
   }
 }

@@ -1,0 +1,33 @@
+<bootstrap-modal [title]="title">
+  <main>
+    <ngb-alert type="danger" *ngIf="errorMessage" (close)="clearError()">{{errorMessage}}</ngb-alert>
+    <form #movieForm="ngForm" (submit)="save()">
+      <div class="form-group">
+        <label for="movie-title">Title</label>
+        <input type="text" class="form-control" id="movie-title" name="movie-title" required aria-describedby="movie-title-help"
+          placeholder="Enter movie title" [(ngModel)]="movie.title">
+      </div>
+      <div class="form-group">
+        <label for="movie-genre">Genre</label>
+        <select name="movie-genre" id="movie-genre" class="form-control" required [compareWith]="compareGenre" [(ngModel)]="movie.genre">
+          <option *ngFor="let genre of genres | async" [ngValue]="genre">{{genre.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="movie-number-in-stock">Number in stock</label>
+        <input type="number" min="0" step="1" class="form-control" name="movie-number-in-stock" id="movie-number-in-stock" required
+          [(ngModel)]="movie.numberInStock">
+      </div>
+      <div class="form-group">
+        <label for="movie-daily-rental-rate">Daily rental rate</label>
+        <input type="number" min="0" step="5" class="form-control" name="movie-daily-rental-rate" id="movie-daily-rental-rate" required
+          [(ngModel)]="movie.dailyRentalRate">
+      </div>
+    </form>
+  </main>
+
+  <footer>
+    <button *ngIf="movie._id" type="button" class="btn btn-outline-danger" (click)="remove()">Remove</button>
+    <button type="button" class="btn btn-primary" [disabled]="!movieForm.form.valid" (click)="save()">Save</button>
+  </footer>
+</bootstrap-modal>

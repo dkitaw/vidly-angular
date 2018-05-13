@@ -42,7 +42,7 @@ export class GenresComponent implements OnInit {
   }
 
   onClick(genre) {
-    this.selectedGenreId = genre ? genre.id : null;
+    this.selectedGenreId = genre ? genre._id : null;
     this.onSelectedGenre.emit(genre);
   }
 

@@ -20,7 +20,7 @@
   </main>
 
   <footer>
-    <button *ngIf="genre.id" type="button" class="btn btn-outline-danger" (click)="remove()">Remove</button>
+    <button *ngIf="genre._id" type="button" class="btn btn-outline-danger" (click)="remove()">Remove</button>
     <button type="button" class="btn btn-primary" [disabled]="!genreForm.form.valid" (click)="save()">Save</button>
   </footer>
 </bootstrap-modal>

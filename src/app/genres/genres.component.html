@@ -3,7 +3,7 @@
     All
     <span *ngIf="auth.isAuthenticated" class="btn btn-outline-secondary btn-sm" (click)="add($event)"><i class="fas fa-plus"></i></span>
   </a>
-  <a routerLink="./" [queryParams]="{genreId: genre.id}" *ngFor="let genre of genres | async" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" [class.active]="genre.id === selectedGenreId" (click)="onClick(genre)" >
+  <a routerLink="./" [queryParams]="{genreId: genre._id}" *ngFor="let genre of genres | async" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" [class.active]="genre._id === selectedGenreId" (click)="onClick(genre)" >
     {{ genre.name }}
     <span *ngIf="auth.isAuthenticated" class="btn btn-outline-secondary btn-sm" (click)="edit($event, genre)"><i class="fas fa-pencil-alt"></i></span>
   </a>
